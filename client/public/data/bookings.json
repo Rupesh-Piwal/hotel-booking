@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "userId": 1,
+      "hotelId": 1,
+      "checkInDate": "2023-10-15",
+      "checkOutDate": "2023-10-20",
+      "guests": 4,
+      "totalPrice": 1000
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "hotelId": 2,
+      "checkInDate": "2023-11-01",
+      "checkOutDate": "2023-11-05",
+      "guests": 2,
+      "totalPrice": 600
+    }
+  ]
