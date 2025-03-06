@@ -77,7 +77,7 @@ const SubmitButtons = ({ isLoading }) => {
       <button
         type="submit"
         disabled={isLoading}
-        className={`w-full py-3 px-4 mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md transition duration-200 ${
+        className={`w-full py-3 px-4 mt-6 bg-blue-600 hover:bg-blue-700 text-white cursor-pointer font-bold rounded-md transition duration-200 ${
           isLoading ? "opacity-75 cursor-not-allowed" : ""
         }`}
       >
@@ -86,7 +86,7 @@ const SubmitButtons = ({ isLoading }) => {
       <button
         type="button"
         onClick={() => navigate(-1)}
-        className="w-full py-3 px-4 bg-white border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition duration-200 mt-3"
+        className="w-full py-3 px-4 bg-white border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition duration-200 mt-3 cursor-pointer"
       >
         Cancel
       </button>
