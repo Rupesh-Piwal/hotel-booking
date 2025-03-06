@@ -1,6 +1,7 @@
-// LoginPage.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../services/api";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,15 +9,23 @@ const Login = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login submitted:", formData);
+    try {
+      const response = await login(formData);
+      localStorage.setItem("token", response.token);
+      toast.success("Login Successfull!");
+      navigate("/");
+    } catch (err) {
+      console.error(err.message || "Login failed. Please try again.");
+      toast.error("Login failed!");
+    }
   };
 
   return (

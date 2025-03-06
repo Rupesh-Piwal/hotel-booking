@@ -1,24 +1,30 @@
-// RegisterPage.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../services/api";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log("Registration submitted:", formData);
+    try {
+      await register(formData);
+      toast.success("Registration Successfull!");
+      navigate("/login");
+    } catch (err) {
+      console.error(err.message || "Registration failed. Please try again.");
+      toast.error("Registration failed!");
+    }
   };
 
   return (
